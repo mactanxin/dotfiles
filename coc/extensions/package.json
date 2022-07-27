@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "@yaegassy/coc-tailwindcss3": ">=0.3.1",
+    "coc-eslint": ">=1.5.8",
+    "coc-html": ">=1.6.1",
+    "coc-prettier": ">=9.3.1",
+    "coc-pyright": ">=1.1.253",
+    "coc-snippets": ">=3.0.14",
+    "coc-svelte": ">=0.4.2",
+    "coc-tsserver": ">=1.10.5",
+    "coc-vetur": ">=1.2.5"
+  }
+}

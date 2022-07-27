@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@cloudbase/cli": "^1.6.7",
+    "create-vite": "^2.8.0"
+  }
+}
