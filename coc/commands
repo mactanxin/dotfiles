@@ -1,3 +1,4 @@
+eslint.createConfig
 snippets.openSnippetFiles
 svelte.restartLanguageServer
 workspace.showOutput

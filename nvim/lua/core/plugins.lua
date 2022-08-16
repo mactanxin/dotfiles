@@ -50,9 +50,10 @@ return packer.startup(function(use)
   use "w0rp/ale"
   use "junegunn/fzf"
   use "junegunn/fzf.vim"
-  use {'neoclide/coc.nvim', branch = 'release'}
+  use {'neoclide/coc.nvim', tag = "v0.0.81"}
   use "junegunn/vim-easy-align"
   use "ayu-theme/ayu-vim"
+  use "lunarvim/synthwave84.nvim"
   use "elzr/vim-json"
   use "othree/html5.vim"
   -- use "evanleck/vim-svelte"
@@ -105,7 +106,15 @@ return packer.startup(function(use)
   }
 
   -- Colorschemes
+  use { 'koenverburg/peepsight.nvim' }
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use { 'mrshmllow/document-color.nvim', config = function()
+  require("document-color").setup {
+    -- Default options
+    mode = "background", -- "background" | "foreground" | "single"
+  }
+  end
+}
   use "norcalli/nvim-colorizer.lua"
   use "easymotion/vim-easymotion"
   -- SearchBox
@@ -159,10 +168,7 @@ return packer.startup(function(use)
 
   use "JoosepAlviste/nvim-ts-context-commentstring"
   -- Smoooooth scrolling
-  use {
-  'declancm/cinnamon.nvim',
-    config = function() require('cinnamon').setup() end
-  }
+  use 'declancm/cinnamon.nvim'
   use { "nvim-telescope/telescope-file-browser.nvim" }
 
   use {
@@ -212,16 +218,11 @@ return packer.startup(function(use)
   }
   use "simrat39/symbols-outline.nvim"
 
-  use {
-    'rmagatti/goto-preview',
-    config = function()
-      require('goto-preview').setup {
-        default_mappings = true;
-      }
-    end
-  }
+  use 'rmagatti/goto-preview'
 
   use 'metakirby5/codi.vim'
+  -- highlighting words
+  use "lfv89/vim-interestingwords"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

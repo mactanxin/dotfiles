@@ -37,7 +37,7 @@ require('telescope').setup{
     },
     buffer_previewer_maker = new_maker,
     file_ignore_patterns = {
-      "node_modules", "build", "dist", "yarn.lock", "core"
+      "node_modules", "build", "dist", "yarn.lock", "core", ".gitignore", ".ignore", ".rgignore"
     },
     mappings = {
       i = {
@@ -51,6 +51,7 @@ require('telescope').setup{
   },
   pickers = {
     find_files = {
+      find_command = { "rg", "--files" },
       mappings = {
         n = {
           ["cd"] = function(prompt_bufnr)

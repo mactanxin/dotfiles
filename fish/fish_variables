@@ -96,6 +96,7 @@ SETUVAR _fish_abbr_glr:git\x20pull\x20\x2d\x2drebase
 SETUVAR _fish_abbr_gm:git\x20merge
 SETUVAR _fish_abbr_gmom:git\x20merge\x20origin/\x28__git\x2edefault_branch\x29
 SETUVAR _fish_abbr_gmt:git\x20mergetool\x20\x2d\x2dno\x2dprompt
+SETUVAR _fish_abbr_got:git\x20log\x20\x2d\x2dpretty\x3dformat\x3a\x22\x25h\x25x09\x25an\x25x09\x25ad\x25x09\x25s\x22\x20\x7c\x20grep\x20\x2dE\x20\x22\x5c\x2020\x3a\x7c\x5c\x2021\x3a\x7c\x5c\x2022\x3a\x7c\x5c\x2023\x3a\x22
 SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_gp_21_:git\x20push\x20\x2d\x2dforce\x2dwith\x2dlease
 SETUVAR _fish_abbr_gpo:git\x20push\x20origin

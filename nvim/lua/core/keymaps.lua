@@ -1,5 +1,5 @@
 local opts = { noremap = true, silent = true }
-
+local expr_opts = { noremap = true, silent = true, expr = true }
 local term_opts = { silent = true }
 
 -- Shorten function name
@@ -43,6 +43,10 @@ mapcmd("<LEADER><CR>", "noh")
 
 mapcmd("<LEADER>d", "Alpha")
 
+mapkey("n", "<LEADER>m", ":call mkdir(expand('%:p:h'), 'p')<CR>", expr_opts)
+mapkey("n", "<LEADER>f", "<Plug>(coc-format-selected)", expr_opts)
+mapkey("v", "<LEADER>f", "<Plug>(coc-format-selected)", expr_opts)
+
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -77,9 +81,6 @@ mapcmd("tt", ":NeoTreeShowToggle")
 mapcmd("<LEADER>r", ":NvimTreeRefresh")
 keymap("n", "<LEADER>p", ":w | !open %<CR>", opts) -- live preview files using dufault App
 
--- coc quick actions
-keymap("n", "[g", "<Plug>(coc-diagnostic-prev)", opts)
-keymap("n", "]g", "<Plug>(coc-diagnostic-next)", opts)
 -- jump back and forth in frames
 mapkey("n", "<LEADER>l", "<C-w>l", opts)
 mapkey("n", "<LEADER>h", "<C-w>h", opts)
@@ -152,3 +153,10 @@ mapcmd("<LEADER>df", ":DiffviewOpen<CR>")
 -- symbols outline
 mapcmd("<LEADER>os", ":SymbolsOutline")
 
+
+-- PeepSight
+mapcmd("<LEADER>pp", ":Peepsight<CR> :lua vim.notify('Peepsight toggled', 'info', { title = 'PeepSight Plugin' })<cr>")
+
+mapcmd("<LEADER>ch", ":ColorHighlight<CR>")
+
+mapkey("n", "<leader>rn", "<Plug>(coc-rename)<rc>", opts)
