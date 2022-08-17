@@ -92,8 +92,8 @@ mapkey("n", "<LEADER>sv", "<C-w>t<C-w>H", opts)
 mapkey("n", "<LEADER>sh", "<C-w>t<C-w>K", opts)
 
 -- Comment
-maplua("<LEADER>/", 'require("Comment.api").toggle_current_linewise()')
-keymap("v", "<LEADER>/", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<cr>", opts)
+maplua("<LEADER>/", 'require("Comment.api").locked("toggle.linewise.current")()')
+keymap("v", "<LEADER>/", '<esc><cmd>lua require("Comment.api").locked("comment.linewise")(vim.fn.visualmode())<CR>', opts)
 
 keymap("", "<LEADER>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
 mapcmd("<LEADER>ss", ":SaveSession")
@@ -159,4 +159,4 @@ mapcmd("<LEADER>pp", ":Peepsight<CR> :lua vim.notify('Peepsight toggled', 'info'
 
 mapcmd("<LEADER>ch", ":ColorHighlight<CR>")
 
-mapkey("n", "<leader>rn", "<Plug>(coc-rename)<rc>", opts)
+mapkey("n", "<leader>rn", "<Plug>(coc-rename)<cr>", opts)
