@@ -144,6 +144,10 @@ local cool = {
 
 local headers = {cool}
 
+dashboard.section.terminal.command = "cat | lolcat --seed=27 " .. os.getenv("HOME") .. "/.config/nvim/static/logo.cat"
+dashboard.section.terminal.width = 69
+dashboard.section.terminal.height = 8
+
 local function header_chars()
   return headers[ math.random(#headers) ]
 end
@@ -217,6 +221,7 @@ local opts = {
     layout = {
         { type = "padding", val = 2 },
         header_color(),
+        --[[ dashboard.section.terminal, ]]
         { type = "padding", val = 2 },
         section_mru,
         { type = "padding", val = 2 },
@@ -228,20 +233,20 @@ local opts = {
 }
 
 alpha.setup(opts)
-vim.cmd("hi StartLogo1                  guifg=#14067E ctermfg=18   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo2                  guifg=#15127B ctermfg=18   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo3                  guifg=#161870 ctermfg=18   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo4                  guifg=#172466 ctermfg=18   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo5                  guifg=#182E5B ctermfg=23   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo6                  guifg=#193A50 ctermfg=23   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo7                  guifg=#1A4647 ctermfg=23   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo8                  guifg=#1B5243 ctermfg=23   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo9                  guifg=#1C5F3F ctermfg=23   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo10                 guifg=#1D6C3C ctermfg=29   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo11                 guifg=#1E7939 ctermfg=29   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo12                 guifg=#1F8636 ctermfg=29   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo13                 guifg=#209330 ctermfg=29   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo14                 guifg=#21A02D ctermfg=35   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo15                 guifg=#22AD2A ctermfg=35   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo16                 guifg=#23B928 ctermfg=35   gui=NONE cterm=NONE")
-vim.cmd("hi StartLogo17                 guifg=#28CC4C ctermfg=41   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo1    guifg=#14067E ctermfg=18   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo2    guifg=#15127B ctermfg=18   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo3    guifg=#161870 ctermfg=18   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo4    guifg=#172466 ctermfg=18   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo5    guifg=#182E5B ctermfg=23   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo6    guifg=#193A50 ctermfg=23   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo7    guifg=#1A4647 ctermfg=23   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo8    guifg=#1B5243 ctermfg=23   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo9    guifg=#1C5F3F ctermfg=23   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo10   guifg=#1D6C3C ctermfg=29   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo11   guifg=#1E7939 ctermfg=29   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo12   guifg=#1F8636 ctermfg=29   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo13   guifg=#209330 ctermfg=29   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo14   guifg=#21A02D ctermfg=35   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo15   guifg=#22AD2A ctermfg=35   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo16   guifg=#23B928 ctermfg=35   gui=NONE cterm=NONE")
+vim.cmd("hi StartLogo17   guifg=#28CC4C ctermfg=41   gui=NONE cterm=NONE")
