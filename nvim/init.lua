@@ -64,8 +64,6 @@ cnoreabbrev Q q
 cnoreabbrev Qall qall
 ]]
 
-vim.cmd("let g:airline#extensions#tabline#enabled = 1")
-vim.cmd("let g:airline#extensions#branch#enabled = 1")
 vim.cmd("let g:auto_session_enabled = v:false")
 vim.g.loaded_matchparen = 1
 vim.g.loaded_matchit = 1
@@ -81,12 +79,10 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_tutor_mode_plugin = 1
 vim.g.loaded_remote_plugins = 1
-vim.g.airline_powerline_fonts = 1
 
 -- use emmet
 vim.g.user_emmet_mode = "a"
 -- vim.g.rooter_patterns = ['.git', 'package.json', 'yarn.lock'] 
--- vim.g.airline#extensions#tabline#enabled = 1
 
 require("core.options")
 require("core.keymaps")
@@ -105,6 +101,7 @@ require("core.startup-screen")
 require("core.dashboard")
 require("core.neo-tree")
 require("core.bufferline")
+require("core.lualine")
 require("core.diffview")
 require("core.lspconfig")
 require("core.symbols-outline")
