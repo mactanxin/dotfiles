@@ -41,8 +41,6 @@ return packer.startup(function(use)
   use "ryanoasis/vim-devicons"
   use "nvim-treesitter/nvim-treesitter"
   use "wellle/context.vim"
-  use "vim-airline/vim-airline"
-  use "vim-airline/vim-airline-themes"
   use "airblade/vim-rooter"
   use "preservim/nerdtree"
   -- use "mhinz/vim-startify"
