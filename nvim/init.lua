@@ -79,7 +79,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_tutor_mode_plugin = 1
 vim.g.loaded_remote_plugins = 1
-
+vim.g.cursorhold_updatetime = 100
 -- use emmet
 vim.g.user_emmet_mode = "a"
 -- vim.g.rooter_patterns = ['.git', 'package.json', 'yarn.lock'] 
@@ -110,7 +110,7 @@ require("core.peepsight")
 require("core.blankline")
 require("core.goto-preview")
 require("core.custom-vim-functions")
-
+require('core.lightbulb')
 
 local vim = vim
 local execute = vim.api.nvim_command
