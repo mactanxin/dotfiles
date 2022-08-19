@@ -1,7 +1,15 @@
+local function chooseRandomTheme ()
+  local myThemeTable = {'powerline', 'OceanicNext', 'onelight', 'papercolor_light', 'solarized_light', 'Tomorrow', 'material', 'dracula' }
+  local rand = math.random(#myThemeTable)
+  vim.notify('Using theme ' .. myThemeTable[rand] .. '', 'info', { title = 'Lualine Theme Selector' })
+  return myThemeTable[rand]
+end
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'powerline',
+    --[[ theme = 'dracula', ]]
+    --[[ theme = myThemeTable[ math.random( #myThemeTable ) ], ]]
+    theme = chooseRandomTheme(),
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
@@ -31,7 +39,7 @@ require('lualine').setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_x = {'location', require('nvim-lightbulb').get_status_text()},
     lualine_y = {},
     lualine_z = {}
   },
@@ -40,3 +48,5 @@ require('lualine').setup {
   inactive_winbar = {},
   extensions = {"fzf", "neo-tree", "fugitive"}
 }
+
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require('nvim-lightbulb').update_lightbulb()]]
