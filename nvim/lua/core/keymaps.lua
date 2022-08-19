@@ -43,10 +43,14 @@ mapcmd("<LEADER><CR>", "noh")
 
 mapcmd("<LEADER>d", "Alpha")
 
-mapkey("n", "<LEADER>m", ":call mkdir(expand('%:p:h'), 'p')<CR>", expr_opts)
-mapkey("n", "<LEADER>f", "<Plug>(coc-format-selected)", expr_opts)
-mapkey("v", "<LEADER>f", "<Plug>(coc-format-selected)", expr_opts)
+mapkey("n", "<LEADER>m", ":call mkdir(expand('%:p:h'), 'p')<CR>")
+mapkey("n", "<LEADER>f", "<Plug>(coc-format-selected)")
+mapkey("v", "<LEADER>f", "<Plug>(coc-format-selected)")
 
+mapkey("n", "[b", ":bprevious<CR>")
+mapkey("n", "]b", ":bnext<CR>")
+mapkey("n", "[B", ":bfirst<CR>")
+mapkey("n", "]B", ":blast<CR>")
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -58,7 +62,7 @@ mapkey("v", "<LEADER>f", "<Plug>(coc-format-selected)", expr_opts)
 keymap("n", "S", ":w<CR> :lua vim.notify('Save Complete', 'info', { title = 'User Operation', timeout = 1000, stages = 'fade_in_slide_out'})<CR>", opts)
 keymap("n", "Q", ":q<CR>", opts)
 keymap("n", "Z", ":q!<CR>", opts)
-keymap("", "R", ":source $MYVIMRC<CR>", opts)
+keymap("", "R", ":luafile %<CR> :lua vim.notify('Configs reloaded', 'info', {title = 'User config reloaded'})<CR>", opts)
 keymap("", "cd", ":chdir", opts)
 
 -- Visual --
