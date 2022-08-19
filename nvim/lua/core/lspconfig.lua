@@ -21,6 +21,10 @@ local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  if client.server_capabilities.colorProvider then
+    -- Attach document colour support
+    require("document-color").buf_attach(bufnr)
+  end
   -- Mappings.
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   local bufopts = { noremap=true, silent=true, buffer=bufnr }
@@ -40,6 +44,11 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 end
+
+-- Capability check for tailwind lsp protocol
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- You are now capable!
+capabilities.textDocument.colorProvider = true
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
@@ -73,3 +82,8 @@ require('lspconfig')['svelte'].setup{
       },
     },
 }
+
+require("lspconfig").tailwindcss.setup({
+  on_attach = on_attach,
+  capabilities = capabilities
+})
