@@ -111,6 +111,7 @@ require("core.blankline")
 require("core.goto-preview")
 require("core.custom-vim-functions")
 require('core.lightbulb')
+require('core.tabline')
 
 local vim = vim
 local execute = vim.api.nvim_command
