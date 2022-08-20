@@ -7,8 +7,7 @@ end
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    --[[ theme = 'dracula', ]]
-    --[[ theme = myThemeTable[ math.random( #myThemeTable ) ], ]]
+    --[[ theme = 'material', ]]
     theme = chooseRandomTheme(),
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
@@ -38,7 +37,7 @@ require('lualine').setup {
   inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
+    lualine_c = {'filename', },
     lualine_x = {'location', require('nvim-lightbulb').get_status_text()},
     lualine_y = {},
     lualine_z = {}
