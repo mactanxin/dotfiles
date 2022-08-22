@@ -49,11 +49,15 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- You are now capable!
 capabilities.textDocument.colorProvider = true
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+require'lspconfig'.eslint.setup{
+}
+
 require('lspconfig')['pyright'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
@@ -87,3 +91,15 @@ require("lspconfig").tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities
 })
+
+require'lspconfig'.volar.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+}
+
+require'lspconfig'.cssls.setup {
+  on_attach = on_attach,
+  filetypes = {'css', 'scss', 'less'},
+  capabilities = capabilities,
+}
