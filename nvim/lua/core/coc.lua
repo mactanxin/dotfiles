@@ -66,13 +66,6 @@ keymap("i", "<c-space>", [[coc#refresh()]], expr_opts)
 keymap("n", "[a", "<Plug>(coc-diagnostic-prev)", { silent = true })
 keymap("n", "]a", "<Plug>(coc-diagnostic-next)", { silent = true })
 
--- GoTo code navigation.
-keymap("n", "gd", "<Plug>(coc-definition)", { silent = true })
-keymap("n", "gs", ":call CocAction('jumpDefinition', 'vsplit') <CR>", { silent = true })
-keymap("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
-keymap("n", "gi", "<Plug>(coc-implementation)", { silent = true })
-keymap("n", "gr", "<Plug>(coc-references)", { silent = true })
-
 
 -- Use K to show documentation in preview window.
 function Show_documentation()
