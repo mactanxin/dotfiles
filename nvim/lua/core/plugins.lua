@@ -38,6 +38,7 @@ packer.init {
 -- Install your plugins here
 return packer.startup(function(use)
   -- My plugins here
+  --[[ use "github/copilot.vim" ]]
   use "ryanoasis/vim-devicons"
   use "nvim-treesitter/nvim-treesitter"
   use "wellle/context.vim"
@@ -48,7 +49,7 @@ return packer.startup(function(use)
   use "w0rp/ale"
   use "junegunn/fzf"
   use "junegunn/fzf.vim"
-  use {'neoclide/coc.nvim', tag = "v0.0.81"}
+  --[[ use {'neoclide/coc.nvim', tag = "v0.0.81"} ]]
   use "junegunn/vim-easy-align"
   use "ayu-theme/ayu-vim"
   use "lunarvim/synthwave84.nvim"
@@ -58,11 +59,10 @@ return packer.startup(function(use)
   -- use "Himujjal/tree-sitter-svelte"
   use 'leafOfTree/vim-svelte-plugin' 
   use "hail2u/vim-css3-syntax"
-  use "pangloss/vim-javascript"
+  --[[ use "pangloss/vim-javascript" ]]
   use "mattn/emmet-vim"
-  use "rodrigore/coc-tailwind-intellisense"
+  --[[ use "rodrigore/coc-tailwind-intellisense" ]]
   use "tpope/vim-fugitive"
-  use "ctrlpvim/ctrlp.vim"
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
