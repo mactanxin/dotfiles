@@ -7,8 +7,8 @@ end
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    --[[ theme = 'powerline', ]]
-    theme = chooseRandomTheme(),
+    theme = 'powerline',
+    --[[ theme = chooseRandomTheme(), ]]
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
