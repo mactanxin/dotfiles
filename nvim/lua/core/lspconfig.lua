@@ -1,4 +1,5 @@
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+require("lsp-format").setup {}
 require("nvim-lsp-installer").setup({
     automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
     ui = {
@@ -18,6 +19,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  require "lsp-format".on_attach(client)
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -55,6 +57,15 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
+local util = require 'vim.lsp.util'
+
+local formatting_callback = function(client, bufnr)
+  vim.keymap.set('n', '<leader>fm', function()
+    local params = util.make_formatting_params({})
+    client.request('textDocument/formatting', params, nil, bufnr) 
+  end, {buffer = bufnr})
+end
+
 require'lspconfig'.eslint.setup{
 }
 
@@ -63,11 +74,6 @@ require('lspconfig')['pyright'].setup{
     flags = lsp_flags,
 }
 require('lspconfig')['tsserver'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags,
-}
-
-require('lspconfig')['volar'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
@@ -94,8 +100,53 @@ require("lspconfig").tailwindcss.setup({
 
 require'lspconfig'.volar.setup{
   on_attach = on_attach,
+  --[[ on_attach = function(client, bufnr) ]]
+  --[[   formatting_callback(client, bufnr) ]]
+  --[[   on_attach(client, bufnr) ]]
+  --[[ end, ]]
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
   capabilities = capabilities,
-  filetypes = {'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+  flags = lsp_flags,
+  init_options = {
+    typescript = {
+      serverPath = ts_server,
+    },
+    languageFeatures = {
+      references = true,
+      definition = true,
+      typeDefinition = true,
+      callHierarchy = true,
+      hover = false,
+      rename = true,
+      signatureHelp = true,
+      codeAction = true,
+      completion = {
+        defaultTagNameCase = "both",
+        defaultAttrNameCase = "kebabCase",
+      },
+      schemaRequestService = true,
+      documentHighlight = true,
+      codeLens = true,
+      semanticTokens = true,
+      diagnostics = true,
+    },
+    documentFeatures = {
+      selectionRange = true,
+      foldingRange = true,
+      linkedEditingRange = true,
+      documentSymbol = true,
+      documentColor = true,
+    },
+  },
+  settings = {
+    volar = {
+      codeLens = {
+        references = true,
+        pugTools = true,
+        scriptSetupTools = true,
+      },
+    },
+  },
 }
 
 require'lspconfig'.cssls.setup {
