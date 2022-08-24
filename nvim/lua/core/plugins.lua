@@ -219,8 +219,6 @@ return packer.startup(function(use)
   use 'rmagatti/goto-preview'
 
   use 'metakirby5/codi.vim'
-  -- highlighting words
-  use "lfv89/vim-interestingwords"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
