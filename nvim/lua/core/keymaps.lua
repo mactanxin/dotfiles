@@ -162,5 +162,5 @@ mapcmd("<LEADER>os", ":SymbolsOutline")
 mapcmd("<LEADER>pp", ":Peepsight<CR> :lua vim.notify('Peepsight toggled', 'info', { title = 'PeepSight Plugin' })<cr>")
 
 mapcmd("<LEADER>ch", ":ColorHighlight<CR>")
-
 mapkey("n", "<leader>rn", "<Plug>(coc-rename)<cr>", opts)
+mapkey("n", "<leader>w", "<C-w>r<cr>")
