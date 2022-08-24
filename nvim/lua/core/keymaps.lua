@@ -12,26 +12,26 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local function mapkey(mode, lhs, rhs)
-    vim.api.nvim_set_keymap(mode, lhs, rhs, {noremap=true})
+	vim.api.nvim_set_keymap(mode, lhs, rhs, { noremap = true })
 end
 
 local function mapcmd(key, cmd)
-    vim.api.nvim_set_keymap('n', key, ':'..cmd..'<cr>', {noremap=true})
+	vim.api.nvim_set_keymap("n", key, ":" .. cmd .. "<cr>", { noremap = true })
 end
 
 local function maplua(key, txt)
-    vim.api.nvim_set_keymap('n', key, ':lua '..txt..'<cr>', {noremap=true})
+	vim.api.nvim_set_keymap("n", key, ":lua " .. txt .. "<cr>", { noremap = true })
 end
 
 local function is_available(plugin)
-  return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
+	return packer_plugins ~= nil and packer_plugins[plugin] ~= nil
 end
 
 local function toast(msg, level)
-  vim.notify(msg, level, {
-    title = "My custom notification",
-    timeout = 5000,
-  })
+	vim.notify(msg, level, {
+		title = "My custom notification",
+		timeout = 5000,
+	})
 end
 
 --Remap space as leader key
@@ -59,17 +59,27 @@ mapkey("n", "]B", ":blast<CR>")
 --   term_mode = "t",
 --   command_mode = "c",
 --
-keymap("n", "S", ":w<CR> :lua vim.notify('Save Complete', 'info', { title = 'User Operation', timeout = 1000, stages = 'fade_in_slide_out'})<CR>", opts)
+keymap(
+	"n",
+	"S",
+	":w<CR> :lua vim.notify('Save Complete', 'info', { title = 'User Operation', timeout = 1000, stages = 'fade_in_slide_out'})<CR>",
+	opts
+)
 keymap("n", "Q", ":q<CR>", opts)
 keymap("n", "Z", ":q!<CR>", opts)
-keymap("", "R", ":luafile /Users/xintan/.config/nvim/init.lua<CR> :lua vim.notify('Configs reloaded', 'info', {title = 'User config reloaded'})<CR>", opts)
+keymap(
+	"",
+	"R",
+	":luafile /Users/xintan/.config/nvim/init.lua<CR> :lua vim.notify('Configs reloaded', 'info', {title = 'User config reloaded'})<CR>",
+	opts
+)
 keymap("", "cd", ":chdir", opts)
 
 -- Visual --
 -- Stay in indent mode
-if is_available "Comment.nvim" then
-  keymap("v", "<", "<gv", opts)
-  keymap("v", ">", ">gv", opts)
+if is_available("Comment.nvim") then
+	keymap("v", "<", "<gv", opts)
+	keymap("v", ">", ">gv", opts)
 end
 
 -- Visual Block --
@@ -97,12 +107,16 @@ mapkey("n", "<LEADER>sh", "<C-w>t<C-w>K", opts)
 
 -- Comment
 maplua("<LEADER>/", 'require("Comment.api").locked("toggle.linewise.current")()')
-keymap("v", "<LEADER>/", '<esc><cmd>lua require("Comment.api").locked("comment.linewise")(vim.fn.visualmode())<CR>', opts)
+keymap(
+	"v",
+	"<LEADER>/",
+	'<esc><cmd>lua require("Comment.api").locked("comment.linewise")(vim.fn.visualmode())<CR>',
+	opts
+)
 
 keymap("", "<LEADER>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
 mapcmd("<LEADER>ss", ":SaveSession")
 mapcmd("<LEADER>sl", ":RestoreSession")
-
 
 -- GoTo Tabs by number
 keymap("", "<LEADER>1", "1gt", opts)
@@ -157,10 +171,13 @@ mapcmd("<LEADER>df", ":DiffviewOpen<CR>")
 -- symbols outline
 mapcmd("<LEADER>os", ":SymbolsOutline")
 
-
 -- PeepSight
 mapcmd("<LEADER>pp", ":Peepsight<CR> :lua vim.notify('Peepsight toggled', 'info', { title = 'PeepSight Plugin' })<cr>")
 
 mapcmd("<LEADER>ch", ":ColorHighlight<CR>")
 mapkey("n", "<leader>rn", "<Plug>(coc-rename)<cr>", opts)
-mapkey("n", "<leader>w", "<C-w>r<cr>")
+mapkey("n", "<leader>ew", "<C-w>r<cr>")
+mapcmd(
+	"<LEADER>fm",
+	":lua vim.lsp.buf.formatting()<cr> :lua vim.notify('formatting file', 'info', { title = 'formatting triggered' })"
+)
