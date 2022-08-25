@@ -102,8 +102,8 @@ mapkey("n", "<LEADER>j", "<C-w>j", opts)
 mapkey("n", "<LEADER>k", "<C-w>k", opts)
 mapkey("n", "<LEADER><LEADER>", "<C-f>", opts)
 mapkey("n", "<LEADER>bb", "<C-b>", opts)
-mapkey("n", "<LEADER>sv", "<C-w>t<C-w>H", opts)
-mapkey("n", "<LEADER>sh", "<C-w>t<C-w>K", opts)
+mapkey("n", ";sv", "<C-w>t<C-w>H<CR>", opts)
+mapkey("n", ";sh", "<C-w>t<C-w>K<CR>", opts)
 
 -- Comment
 maplua("<LEADER>/", 'require("Comment.api").locked("toggle.linewise.current")()')
@@ -177,7 +177,4 @@ mapcmd("<LEADER>pp", ":Peepsight<CR> :lua vim.notify('Peepsight toggled', 'info'
 mapcmd("<LEADER>ch", ":ColorHighlight<CR>")
 mapkey("n", "<leader>rn", "<Plug>(coc-rename)<cr>", opts)
 mapkey("n", "<leader>ew", "<C-w>r<cr>")
-mapcmd(
-	"<LEADER>fm",
-	":lua vim.lsp.buf.formatting()<cr> :lua vim.notify('formatting file', 'info', { title = 'formatting triggered' })"
-)
+mapcmd("<LEADER>fm", ":lua vim.lsp.buf.formatting()<cr>")
