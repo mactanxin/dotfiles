@@ -22,6 +22,7 @@ null_ls.setup({
 	debug = true,
 	sources = {
 		formatting.eslint_d,
+		formatting.stylua,
 		null_ls.builtins.diagnostics.eslint_d,
 		null_ls.builtins.completion.spell,
 	},
