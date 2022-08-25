@@ -19,7 +19,7 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  require "lsp-format".on_attach(client)
+  --[[ require "lsp-format".on_attach(client) ]]
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -60,7 +60,8 @@ local lsp_flags = {
 local util = require 'vim.lsp.util'
 
 local formatting_callback = function(client, bufnr)
-  vim.keymap.set('n', '<leader>fm', function()
+  print("client is", client.name )
+  vim.keymap.set('n', '<leader>fk', function()
     local params = util.make_formatting_params({})
     client.request('textDocument/formatting', params, nil, bufnr) 
   end, {buffer = bufnr})
@@ -104,7 +105,7 @@ require'lspconfig'.volar.setup{
   --[[   formatting_callback(client, bufnr) ]]
   --[[   on_attach(client, bufnr) ]]
   --[[ end, ]]
-  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue", "json" },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
   capabilities = capabilities,
   flags = lsp_flags,
   init_options = {
