@@ -60,7 +60,6 @@ local lsp_flags = {
 local util = require("vim.lsp.util")
 
 local formatting_callback = function(client, bufnr)
-	print("client is", client.name)
 	client.resolved_capabilities.document_formatting = false
 	client.resolved_capabilities.document_range_formatting = false
 end
