@@ -11,9 +11,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local format = function(payload)
 	vim.lsp.buf.formatting({
 		filter = function(clients)
-			return vim.tbl_filter(function(client)
-				return client.name ~= "volar"
-			end, clients)
+			return client.name == "null-ls"
 		end,
 	})
 end
@@ -24,7 +22,7 @@ null_ls.setup({
 		formatting.eslint_d,
 		formatting.stylua,
 		null_ls.builtins.diagnostics.eslint_d,
-		null_ls.builtins.completion.spell,
+		--[[ null_ls.builtins.completion.spell, ]]
 	},
 	-- you can reuse a shared lspconfig on_attach callback here
 	on_attach = function(client, bufnr)
@@ -37,4 +35,8 @@ null_ls.setup({
 			})
 		end
 	end,
+})
+
+null_ls.builtins.formatting.eslint_d.with({
+	extra_args = { "--style", "{IndentWidth: 2 ,ColumnLimit: 120}" },
 })
