@@ -96,7 +96,6 @@ require("lspconfig").tailwindcss.setup({
 })
 
 require("lspconfig").volar.setup({
-	--[[ on_attach = on_attach, ]]
 	on_attach = function(client, bufnr)
 		formatting_callback(client, bufnr)
 		on_attach(client, bufnr)
