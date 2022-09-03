@@ -12,23 +12,23 @@ vim.cmd("set autochdir")
 vim.cmd("set nofoldenable")
 vim.cmd("colorscheme ayu")
 vim.cmd("let ayucolor='mirage'")
-vim.cmd [[
+vim.cmd([[
   try
     colorscheme ayu
   catch /^Vim\%((\a\+)\)\=:E185/
     colorscheme default
     set background=dark
   endtry
-]]
-vim.cmd [[
+]])
+vim.cmd([[
   set fillchars+=diff:\ 
 
 if exists("g:loaded_webdevicons")
   call webdevicons#refresh()
 endif
-]]
+]])
 
-vim.cmd [[
+vim.cmd([[
 
 "*****************************************************************************
 "" Abbreviations
@@ -45,7 +45,7 @@ cnoreabbrev WQ wq
 cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
-]]
+]])
 
 vim.cmd("let g:auto_session_enabled = v:false")
 vim.g.loaded_matchparen = 1
@@ -65,7 +65,7 @@ vim.g.loaded_remote_plugins = 1
 vim.g.cursorhold_updatetime = 100
 -- use emmet
 vim.g.user_emmet_mode = "a"
--- vim.g.rooter_patterns = ['.git', 'package.json', 'yarn.lock'] 
+-- vim.g.rooter_patterns = ['.git', 'package.json', 'yarn.lock']
 require("core.options")
 require("core.keymaps")
 require("core.nvim-cmp")
@@ -92,15 +92,16 @@ require("core.peepsight")
 require("core.blankline")
 require("core.goto-preview")
 require("core.custom-vim-functions")
-require('core.lightbulb')
-require('core.tabline')
-require('core.lsp-status')
-require('core.null-ls')
+require("core.lightbulb")
+require("core.tabline")
+require("core.lsp-status")
+require("core.null-ls")
+require("core.shade")
 
 local vim = vim
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
 require("telescope").load_extension("session-lens")
-require('telescope').load_extension("notify")
-require('telescope').load_extension("file_browser")
+require("telescope").load_extension("notify")
+require("telescope").load_extension("file_browser")
