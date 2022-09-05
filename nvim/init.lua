@@ -96,7 +96,7 @@ require("core.lightbulb")
 require("core.tabline")
 require("core.lsp-status")
 require("core.null-ls")
-require("core.shade")
+--[[ require("core.shade") ]]
 
 local vim = vim
 local execute = vim.api.nvim_command
@@ -105,3 +105,6 @@ local fn = vim.fn
 require("telescope").load_extension("session-lens")
 require("telescope").load_extension("notify")
 require("telescope").load_extension("file_browser")
+require("hologram").setup({
+	auto_display = true, -- WIP automatic markdown image display, may be prone to breaking
+})
