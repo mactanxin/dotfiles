@@ -20,9 +20,36 @@ local new_maker = function(filepath, bufnr, opts)
   }):sync()
 end
 
-
+local hologram = require("core.telescope.hologram")
 require('telescope').setup{
   defaults = {
+    preview = {
+      mime_hook = function(filepath, bufnr, opts)
+        local is_image = function(filepath)
+          local image_extensions = {'png','jpg', 'jpeg'}   -- Supported image formats
+          local split_path = vim.split(filepath:lower(), '.', {plain=true})
+          local extension = split_path[#split_path]
+          return vim.tbl_contains(image_extensions, extension)
+        end
+        if is_image(filepath) then
+          vim.notify('image dectected', 'info')
+          local term = vim.api.nvim_open_term(bufnr, {})
+          local function send_output(_, data, _ )
+            for _, d in ipairs(data) do
+              vim.api.nvim_chan_send(term, d..'\r\n')
+            end
+          end
+          vim.fn.jobstart(
+            {
+              'catimg', filepath  -- Terminal image viewer command
+            }, 
+            {on_stdout=send_output, stdout_buffered=true})
+        else
+          vim.notify('image not dectected', 'error')
+          require("telescope.previewers.utils").set_preview_message(bufnr, opts.winid, "Img Binary cannot be previewed")
+        end
+      end
+    },
     -- Default configuration for telescope goes here:
     -- config_key = value,
     vimgrep_arguments = {
@@ -35,7 +62,8 @@ require('telescope').setup{
       "--smart-case",
       "--trim" -- add this value
     },
-    buffer_previewer_maker = new_maker,
+    --[[ buffer_previewer_maker = new_maker, ]]
+    buffer_previewer_maker = hologram.buffer_previewer_maker,
     file_ignore_patterns = {
       "node_modules", "build", "dist", "yarn.lock", "core", ".gitignore", ".ignore", ".rgignore"
     },
@@ -66,11 +94,24 @@ require('telescope').setup{
     },
   }
   extensions = {
+    file_browser = {
+      theme = "ivy",
+      -- disables netrw and use telescope-file-browser in its place
+      hijack_netrw = true,
+      mappings = {
+        ["i"] = {
+          -- your custom insert mode mappings
+        },
+        ["n"] = {
+          -- your custom normal mode mappings
+        },
+      },
+    },
     media_files = {
       -- filetypes whitelist
       -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
       filetypes = {"png", "webp", "jpg", "jpeg"},
-      find_cmd = "fd" -- find command (defaults to `fd`)
+      find_cmd = "rg" -- find command (defaults to `fd`)
     }
     -- Your extension configuration goes here:
     -- extension_name = {
