@@ -123,7 +123,7 @@ return packer.startup(function(use)
 	use("easymotion/vim-easymotion")
 	-- SearchBox
 	use("MunifTanjim/nui.nvim")
-	use("VonHeikemen/searchbox.nvim")
+	--[[ use("VonHeikemen/searchbox.nvim") ]]
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -175,7 +175,8 @@ return packer.startup(function(use)
 	-- Smoooooth scrolling
 	use("declancm/cinnamon.nvim")
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
-
+	use("nvim-telescope/telescope-media-files.nvim")
+  use("rafaqz/ranger.vim")
 	use({
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
