@@ -176,7 +176,7 @@ return packer.startup(function(use)
 	use("declancm/cinnamon.nvim")
 	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use("nvim-telescope/telescope-media-files.nvim")
-  use("rafaqz/ranger.vim")
+	use("rafaqz/ranger.vim")
 	use({
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
@@ -227,6 +227,14 @@ return packer.startup(function(use)
 	use("rmagatti/goto-preview")
 	use("sunjon/shade.nvim")
 	use("metakirby5/codi.vim")
+
+	use({
+		"mvllow/modes.nvim",
+		tag = "v0.2.0",
+		config = function()
+			require("modes").setup()
+		end,
+	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
