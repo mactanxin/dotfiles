@@ -96,6 +96,7 @@ require("core.lightbulb")
 require("core.tabline")
 require("core.lsp-status")
 require("core.null-ls")
+require("core.modes")
 --[[ require("core.shade") ]]
 
 local vim = vim
