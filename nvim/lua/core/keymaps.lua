@@ -51,6 +51,8 @@ mapkey("n", "[b", ":bprevious<CR>")
 mapkey("n", "]b", ":bnext<CR>")
 mapkey("n", "[B", ":bfirst<CR>")
 mapkey("n", "]B", ":blast<CR>")
+
+mapkey("x", "<leader>o", '"_dP')
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -169,7 +171,7 @@ mapcmd("ga", ":EasyAlign<CR>", opts)
 mapcmd("<LEADER>df", ":DiffviewOpen<CR>")
 
 -- symbols outline
-mapcmd("<LEADER>os", ":SymbolsOutline")
+--[[ mapcmd("<LEADER>os", ":SymbolsOutline") ]]
 
 -- PeepSight
 mapcmd("<LEADER>pp", ":Peepsight<CR> :lua vim.notify('Peepsight toggled', 'info', { title = 'PeepSight Plugin' })<cr>")
@@ -178,3 +180,7 @@ mapcmd("<LEADER>ch", ":ColorHighlight<CR>")
 mapkey("n", "<leader>rn", "<Plug>(coc-rename)<cr>", opts)
 mapkey("n", "<leader>ew", "<C-w>r<cr>")
 mapcmd("<LEADER>fm", ":lua vim.lsp.buf.formatting()<cr>")
+
+
+-- toggle null-ls
+mapkey("n", "<leader>tn", ":lua require('null-ls').toggle({})<cr>")
