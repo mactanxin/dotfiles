@@ -1,5 +1,4 @@
 {
-  "Lua.telemetry.enable": true,
   "svelte.enable-ts-plugin": true,
   "html.autoClosingTags": true,
   "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "vue", "javascript", "typescript", "html", "svelte"],

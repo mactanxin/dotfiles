@@ -51,8 +51,9 @@ return packer.startup(function(use)
 	use("junegunn/fzf.vim")
 	--[[ use {'neoclide/coc.nvim', tag = "v0.0.81"} ]]
 	use("junegunn/vim-easy-align")
-	use("ayu-theme/ayu-vim")
-	use("lunarvim/synthwave84.nvim")
+	--[[ use("ayu-theme/ayu-vim") ]]
+	use("Shatur/neovim-ayu")
+	use("folke/tokyonight.nvim")
 	use("elzr/vim-json")
 	use("othree/html5.vim")
 	-- use "evanleck/vim-svelte"
@@ -62,7 +63,7 @@ return packer.startup(function(use)
 	--[[ use "pangloss/vim-javascript" ]]
 	use("mattn/emmet-vim")
 	--[[ use "rodrigore/coc-tailwind-intellisense" ]]
-	use("tpope/vim-fugitive")
+	--[[ use("tpope/vim-fugitive") ]]
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
@@ -77,7 +78,6 @@ return packer.startup(function(use)
 	use("kdheepak/tabline.nvim")
 	use({
 		"akinsho/toggleterm.nvim",
-		tag = "v1.*",
 		config = function()
 			require("toggleterm").setup()
 		end,
@@ -92,6 +92,11 @@ return packer.startup(function(use)
 		"folke/which-key.nvim",
 		config = function()
 			require("which-key").setup({
+				plugins = {
+					presets = {
+						operators = false,
+					},
+				},
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
 				-- refer to the configuration section below
@@ -166,10 +171,13 @@ return packer.startup(function(use)
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/plenary.nvim" } },
+		requires = { { "nvim-lua/plenary.nvim" }, { "kdheepak/lazygit.nvim" } },
+		config = function()
+			require("telescope").load_extension("lazygit")
+		end,
 	})
 	use("nvim-telescope/telescope-fzf-native.nvim")
-	use({ "edluffy/hologram.nvim" })
+	--[[ use({ "edluffy/hologram.nvim" }) ]]
 
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	-- Smoooooth scrolling
@@ -212,7 +220,12 @@ return packer.startup(function(use)
 	-- Parenthesis highlighting
 	use("p00f/nvim-ts-rainbow")
 	-- Git
-	use("lewis6991/gitsigns.nvim")
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	})
 	-- Git Diff View
 	use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 
@@ -227,7 +240,7 @@ return packer.startup(function(use)
 	use("rmagatti/goto-preview")
 	use("sunjon/shade.nvim")
 	use("metakirby5/codi.vim")
-
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 	use({
 		"mvllow/modes.nvim",
 		tag = "v0.2.0",
@@ -235,6 +248,28 @@ return packer.startup(function(use)
 			require("modes").setup()
 		end,
 	})
+	use("tpope/vim-surround")
+	use("AndrewRadev/tagalong.vim")
+	use("tpope/vim-repeat")
+
+	-- noice
+	--[[ use({ ]]
+	--[[ 	"folke/noice.nvim", ]]
+	--[[ 	event = "VimEnter", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("noice").setup() ]]
+	--[[ 	end, ]]
+	--[[ 	requires = { ]]
+	--[[ 		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries ]]
+	--[[ 		"MunifTanjim/nui.nvim", ]]
+	--[[ 		-- OPTIONAL: ]]
+	--[[ 		--   `nvim-notify` is only needed, if you want to use the notification view. ]]
+	--[[ 		--   If not available, we use `mini` as the fallback ]]
+	--[[ 		"rcarriga/nvim-notify", ]]
+	--[[ 	}, ]]
+	--[[ }) ]]
+	-- neo-minimap
+	use("ziontee113/neo-minimap")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

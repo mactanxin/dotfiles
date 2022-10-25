@@ -45,7 +45,7 @@ require('lualine').setup {
   tabline = {},
   winbar = {},
   inactive_winbar = {},
-  extensions = {"fzf", "neo-tree", "fugitive"}
+  extensions = {"fzf", "neo-tree", "fugitive", }
 }
 
 vim.cmd [[autocmd CursorHold,CursorHoldI * lua require('nvim-lightbulb').update_lightbulb()]]

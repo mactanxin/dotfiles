@@ -1,5 +1,3 @@
--- basics
-require("core.impatient")
 vim.cmd("set nocompatible")
 vim.cmd("syntax on")
 vim.cmd("filetype plugin indent on")
@@ -8,24 +6,14 @@ vim.cmd("set ruler")
 vim.cmd("nohlsearch")
 vim.cmd("set statusline+=%F")
 vim.cmd("set autochdir")
--- vim.cmd("set autoreload")
 vim.cmd("set nofoldenable")
-vim.cmd("colorscheme ayu")
-vim.cmd("let ayucolor='mirage'")
-vim.cmd([[
-  try
-    colorscheme ayu
-  catch /^Vim\%((\a\+)\)\=:E185/
-    colorscheme default
-    set background=dark
-  endtry
-]])
+vim.cmd("colorscheme ayu-mirage")
 vim.cmd([[
   set fillchars+=diff:\ 
 
-if exists("g:loaded_webdevicons")
-  call webdevicons#refresh()
-endif
+  if exists("g:loaded_webdevicons")
+    call webdevicons#refresh()
+  endif
 ]])
 
 vim.cmd([[
@@ -65,7 +53,7 @@ vim.g.loaded_remote_plugins = 1
 vim.g.cursorhold_updatetime = 100
 -- use emmet
 vim.g.user_emmet_mode = "a"
--- vim.g.rooter_patterns = ['.git', 'package.json', 'yarn.lock']
+
 require("core.options")
 require("core.keymaps")
 require("core.nvim-cmp")
@@ -96,7 +84,8 @@ require("core.lightbulb")
 require("core.tabline")
 require("core.lsp-status")
 require("core.null-ls")
-require("core.modes")
+--[[ require("core.modes") ]]
+require("core.minimap")
 --[[ require("core.shade") ]]
 
 local vim = vim
@@ -106,6 +95,9 @@ local fn = vim.fn
 require("telescope").load_extension("session-lens")
 require("telescope").load_extension("notify")
 require("telescope").load_extension("file_browser")
-require("hologram").setup({
-	auto_display = true, -- WIP automatic markdown image display, may be prone to breaking
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = vim.api.nvim_create_augroup("PACKER", { clear = true }),
+	pattern = "plugins.lua",
+	command = "source <afile> | PackerCompile",
 })

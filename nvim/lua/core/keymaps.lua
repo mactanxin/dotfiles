@@ -33,7 +33,6 @@ local function toast(msg, level)
 		timeout = 5000,
 	})
 end
-
 --Remap space as leader key
 --
 mapcmd("s", "<Nop>")
@@ -72,7 +71,7 @@ keymap("n", "Z", ":q!<CR>", opts)
 keymap(
 	"",
 	"R",
-	":luafile /Users/xintan/.config/nvim/init.lua<CR> :lua vim.notify('Configs reloaded', 'info', {title = 'User config reloaded'})<CR>",
+	":lua vim.cmd([[source $MYVIMRC]]) vim.notify('Configs reloaded', 'info', {title = 'User config reloaded'})<CR>",
 	opts
 )
 keymap("", "cd", ":chdir", opts)
@@ -115,6 +114,16 @@ keymap(
 	'<esc><cmd>lua require("Comment.api").locked("comment.linewise")(vim.fn.visualmode())<CR>',
 	opts
 )
+vim.keymap.set("n", "<leader>sr", "", {
+	silent = true,
+	desc = "reload init.lua",
+	callback = function()
+		vim.cmd([[
+      source $MYVIMRC
+    ]])
+		vim.notify("Nvim config successfully reloaded!", vim.log.levels.INFO, { title = "nvim-config" })
+	end,
+})
 
 keymap("", "<LEADER>cd", ":cd %:p:h<CR>:pwd<CR>", opts)
 mapcmd("<LEADER>ss", ":SaveSession")
@@ -157,6 +166,13 @@ mapkey("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 mapkey("n", "<leader>ft", "<cmd>Telescope notify<cr>")
 maplua("<leader>fs", "require('session-lens').search_session()")
 mapkey("n", "<leader>fe", "<cmd>Telescope file_browser<cr>")
+-- telescope git commands
+mapkey("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
+mapkey("n", "<leader>gbc", "<cmd>Telescope git_bcommits<cr>", opts)
+mapkey("n", "<leader>gbr", "<cmd>Telescope git_branches<cr>", opts)
+mapkey("n", "<leader>gst", "<cmd>Telescope git_status<cr>", opts)
+maplua("<leader>fs", "require('session-lens').search_session()")
+maplua("<leader>cn", "require('notify').dismiss()<cr>", opts)
 -- SarchBox Key Bindings
 mapcmd("<LEADER>s", "SearchBoxIncSearch")
 mapcmd("<LEADER>r", "SearchBoxReplace confirm=menu")
@@ -180,7 +196,8 @@ mapcmd("<LEADER>ch", ":ColorHighlight<CR>")
 mapkey("n", "<leader>rn", "<Plug>(coc-rename)<cr>", opts)
 mapkey("n", "<leader>ew", "<C-w>r<cr>")
 mapcmd("<LEADER>fm", ":lua vim.lsp.buf.formatting()<cr>")
-
-
+--[[ mapkey("n", "<Leader>", ":WhichKey\r<leader>", opts) ]]
 -- toggle null-ls
 mapkey("n", "<leader>tn", ":lua require('null-ls').toggle({})<cr>")
+-- LazyGit
+mapcmd("<leader>lg", ":LazyGit")

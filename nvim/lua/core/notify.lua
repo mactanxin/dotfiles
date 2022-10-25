@@ -8,7 +8,7 @@ require("notify").setup({
   -- Render function for notification
   render = "default",
 
-  timeout = 5000,
+  timeout = 3000,
 
   -- Icons for the different levels
   icons = {

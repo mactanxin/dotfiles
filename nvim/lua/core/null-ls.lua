@@ -9,10 +9,11 @@ local diagnostics = null_ls.builtins.diagnostics
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local format = function(payload)
-	vim.lsp.buf.formatting({
-		filter = function(clients)
-			return client.name == "null-ls"
-		end,
+	vim.lsp.buf.format({
+		async = true,
+		--[[ filter = function(clients) ]]
+		--[[ 	return client.name == "null-ls" ]]
+		--[[ end, ]]
 	})
 end
 
@@ -22,6 +23,7 @@ null_ls.setup({
 		formatting.eslint_d,
 		formatting.stylua,
 		null_ls.builtins.diagnostics.eslint_d,
+		--[[ null_ls.builtins.code_actions.gitsigns, ]]
 		--[[ null_ls.builtins.completion.spell, ]]
 	},
 	-- you can reuse a shared lspconfig on_attach callback here

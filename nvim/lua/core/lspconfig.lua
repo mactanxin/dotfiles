@@ -25,11 +25,12 @@ local on_attach = function(client, bufnr)
 
 	if client.server_capabilities.colorProvider then
 		-- Attach document colour support
-		require("document-color").buf_attach(bufnr)
+		--[[ require("document-color").buf_attach(bufnr) ]]
 	end
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
+	local async_bufopts = { noremap = true, silent = true, buffer = bufnr, async = true }
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
@@ -45,6 +46,8 @@ local on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 	vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
+	-- vim.lsp.buf.format({ async = false })
+	--[[ vim.keymap.set("n", "<space>f", vim.lsp.buf.format, async_bufopts) ]]
 end
 
 -- Capability check for tailwind lsp protocol
@@ -60,8 +63,8 @@ local lsp_flags = {
 local util = require("vim.lsp.util")
 
 local formatting_callback = function(client, bufnr)
-	client.resolved_capabilities.document_formatting = false
-	client.resolved_capabilities.document_range_formatting = false
+	client.server_capabilities.document_formatting = false
+	client.server_capabilities.document_range_formatting = false
 end
 
 require("lspconfig").eslint.setup({})
@@ -128,7 +131,7 @@ require("lspconfig").volar.setup({
 		},
 		documentFeatures = {
 			selectionRange = true,
-			foldingRange = true,
+			foldingRange = false,
 			linkedEditingRange = true,
 			documentSymbol = true,
 			documentColor = true,

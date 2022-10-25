@@ -165,6 +165,7 @@ SETUVAR _fish_abbr_gwtpr:git\x20worktree\x20prune
 SETUVAR _fish_abbr_gwtrm:git\x20worktree\x20remove
 SETUVAR _fish_abbr_gwtulo:git\x20worktree\x20unlock
 SETUVAR _fish_abbr_h:history
+SETUVAR _fish_abbr_lg:lazygit
 SETUVAR _fish_abbr_ll:exa\x20\x2dlag\x20\x2d\x2dicons\x20\x2d\x2dheader
 SETUVAR _fish_abbr_ls:exa\x20\x2dlag\x20\x2d\x2dheader
 SETUVAR _fish_abbr_mkdir:mkdir\x20\x2dp
