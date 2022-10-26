@@ -66,7 +66,7 @@ require("core.comment")
 require("core.cinnamon")
 require("core.autopairs")
 require("core.showMessage")
-require("core.notify")
+--[[ require("core.notify") ]]
 require("core.startup-screen")
 require("core.dashboard")
 require("core.neo-tree")
