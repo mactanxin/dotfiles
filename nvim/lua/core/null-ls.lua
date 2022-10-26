@@ -18,11 +18,11 @@ local format = function(payload)
 end
 
 null_ls.setup({
-	debug = true,
+	debug = false,
 	sources = {
 		formatting.eslint_d,
 		formatting.stylua,
-		null_ls.builtins.diagnostics.eslint_d,
+		diagnostics.eslint_d,
 		--[[ null_ls.builtins.code_actions.gitsigns, ]]
 		--[[ null_ls.builtins.completion.spell, ]]
 	},
