@@ -128,7 +128,7 @@ return packer.startup(function(use)
 	use("easymotion/vim-easymotion")
 	-- SearchBox
 	use("MunifTanjim/nui.nvim")
-	--[[ use("VonHeikemen/searchbox.nvim") ]]
+	use("VonHeikemen/searchbox.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
