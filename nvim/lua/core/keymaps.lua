@@ -187,7 +187,7 @@ mapcmd("ga", ":EasyAlign<CR>", opts)
 mapcmd("<LEADER>df", ":DiffviewOpen<CR>")
 
 -- symbols outline
---[[ mapcmd("<LEADER>os", ":SymbolsOutline") ]]
+mapcmd("<LEADER>so", ":SymbolsOutline")
 
 -- PeepSight
 mapcmd("<LEADER>pp", ":Peepsight<CR> :lua vim.notify('Peepsight toggled', 'info', { title = 'PeepSight Plugin' })<cr>")
