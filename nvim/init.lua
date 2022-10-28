@@ -1,16 +1,4 @@
-vim.cmd("set nocompatible")
-vim.cmd("syntax on")
-vim.cmd("filetype plugin indent on")
-vim.cmd("set foldmethod=indent")
-vim.cmd("set ruler")
-vim.cmd("nohlsearch")
-vim.cmd("set statusline+=%F")
-vim.cmd("set autochdir")
-vim.cmd("set nofoldenable")
-vim.cmd("colorscheme ayu-mirage")
 vim.cmd([[
-  set fillchars+=diff:\ 
-
   if exists("g:loaded_webdevicons")
     call webdevicons#refresh()
   endif
@@ -35,7 +23,7 @@ cnoreabbrev Q q
 cnoreabbrev Qall qall
 ]])
 
-vim.cmd("let g:auto_session_enabled = v:false")
+vim.g.auto_session_enabled = "v:false"
 vim.g.loaded_matchparen = 1
 vim.g.loaded_matchit = 1
 vim.g.loaded_logiPat = 1
@@ -54,6 +42,7 @@ vim.g.cursorhold_updatetime = 100
 -- use emmet
 vim.g.user_emmet_mode = "a"
 
+require("core.ayu")
 require("core.options")
 require("core.keymaps")
 require("core.nvim-cmp")
