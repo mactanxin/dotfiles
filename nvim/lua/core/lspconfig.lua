@@ -51,7 +51,8 @@ local on_attach = function(client, bufnr)
 end
 
 -- Capability check for tailwind lsp protocol
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+--[[ local capabilities = vim.lsp.protocol.make_client_capabilities() ]]
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- You are now capable!
 capabilities.textDocument.colorProvider = true
 capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -104,6 +105,7 @@ require("lspconfig").volar.setup({
 		on_attach(client, bufnr)
 	end,
 	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+	--[[ capabilities = capabilities, ]]
 	capabilities = capabilities,
 	flags = lsp_flags,
 	init_options = {

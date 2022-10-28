@@ -1,4 +1,12 @@
 local options = {
+	foldenable = false,
+	hlsearch = false,
+	statusline = '%F',
+	foldmethod = "syntax",
+	syntax = "on",
+	autochdir = true,
+	ruler = true,
+	hlsearch = false,
 	backup = false, -- creates a backup file
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 	cmdheight = 1, -- more space in the neovim command line for displaying messages
@@ -48,6 +56,12 @@ vim.opt.shortmess:append("c")
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
+
+local o = vim.o
+
+o.statusline = ""
+o.statusline = o.statusline .. "%f"
+-- o.fillchars = o.fillchars .. 'diff:'
 
 if vim.fn.has("termguicolors") == 1 then
 	vim.opt.termguicolors = true
