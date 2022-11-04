@@ -28,7 +28,7 @@ require("core.symbols-outline")
 require("core.gitsigns")
 require("core.peepsight")
 require("core.blankline")
-require("core.goto-preview")
+--[[ require("core.goto-preview") ]]
 require("core.custom-vim-functions")
 require("core.lightbulb")
 require("core.tabline")
@@ -36,6 +36,10 @@ require("core.lsp-status")
 require("core.null-ls")
 --[[ require("core.modes") ]]
 require("core.minimap")
+require("core.lspsaga")
+require("core.neodim")
+require("core.autotag")
+require("core.utils")
 --[[ require("core.shade") ]]
 
 local vim = vim
