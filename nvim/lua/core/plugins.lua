@@ -251,6 +251,7 @@ return packer.startup(function(use)
 	use("tpope/vim-surround")
 	use("AndrewRadev/tagalong.vim")
 	use("tpope/vim-repeat")
+	use("windwp/nvim-ts-autotag")
 	-- neo-minimap
 	use("ziontee113/neo-minimap")
 	use({
@@ -268,6 +269,18 @@ return packer.startup(function(use)
 			"rcarriga/nvim-notify",
 		},
 	})
+	--[[ use({ ]]
+	--[[ 	"folke/drop.nvim", ]]
+	--[[ 	event = "VimEnter", ]]
+	--[[ 	config = function() ]]
+	--[[ 		require("drop").setup({ ]]
+	--[[ 		  theme="stars" ]]
+	--[[ 		}) ]]
+	--[[ 	end, ]]
+	--[[ }) ]]
+	use("glepnir/lspsaga.nvim")
+	use("zbirenbaum/neodim")
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
