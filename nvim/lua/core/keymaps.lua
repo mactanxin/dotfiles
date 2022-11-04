@@ -70,6 +70,9 @@ mapkey("n", "]b", ":bnext<CR>")
 mapkey("n", "[B", ":bfirst<CR>")
 mapkey("n", "]B", ":blast<CR>")
 
+mapkey("n", "+", "<C-a>")
+mapkey("n", "-", "<C-x>")
+
 mapkey("x", "<leader>o", '"_dP')
 -- Modes
 --   normal_mode = "n",
@@ -193,8 +196,8 @@ mapkey("n", "<leader>gst", "<cmd>Telescope git_status<cr>", opts)
 maplua("<leader>fs", "require('session-lens').search_session()")
 maplua("<leader>cn", "require('notify').dismiss()<cr>", opts)
 -- SarchBox Key Bindings
-mapcmd("<LEADER>s", "SearchBoxIncSearch")
-mapcmd("<LEADER>r", "SearchBoxReplace confirm=menu")
+mapcmd("<LEADER>rs", "SearchBoxIncSearch")
+mapcmd("<LEADER>rr", "SearchBoxReplace confirm=menu")
 
 -- EasyMotion
 keymap("n", "s", "<Plug>(easymotion-bd-f)", opts)
