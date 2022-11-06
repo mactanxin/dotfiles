@@ -39,19 +39,15 @@ packer.init({
 return packer.startup(function(use)
 	-- My plugins here
 	--[[ use "github/copilot.vim" ]]
-	use("ryanoasis/vim-devicons")
 	use("nvim-treesitter/nvim-treesitter")
 	use("wellle/context.vim")
 	use("airblade/vim-rooter")
-	use("preservim/nerdtree")
 	-- use "mhinz/vim-startify"
 	use("majutsushi/tagbar")
 	use("w0rp/ale")
 	use("junegunn/fzf")
 	use("junegunn/fzf.vim")
-	--[[ use {'neoclide/coc.nvim', tag = "v0.0.81"} ]]
 	use("junegunn/vim-easy-align")
-	--[[ use("ayu-theme/ayu-vim") ]]
 	use("Shatur/neovim-ayu")
 	use("folke/tokyonight.nvim")
 	use("elzr/vim-json")
@@ -62,8 +58,6 @@ return packer.startup(function(use)
 	use("hail2u/vim-css3-syntax")
 	--[[ use "pangloss/vim-javascript" ]]
 	use("mattn/emmet-vim")
-	--[[ use "rodrigore/coc-tailwind-intellisense" ]]
-	--[[ use("tpope/vim-fugitive") ]]
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
@@ -71,7 +65,6 @@ return packer.startup(function(use)
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("kyazdani42/nvim-web-devicons")
 	use("kyazdani42/nvim-tree.lua")
-	-- use "akinsho/bufferline.nvim"
 	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
@@ -114,7 +107,6 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	use({ "koenverburg/peepsight.nvim" })
-	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 	use({
 		"mrshmllow/document-color.nvim",
 		config = function()
@@ -142,11 +134,12 @@ return packer.startup(function(use)
 	use("L3MON4D3/LuaSnip") --snippet engine
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
-	-- LSPh
+	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("nvim-lua/lsp-status.nvim")
 	use("lukas-reineke/lsp-format.nvim")
+	use("onsails/lspkind.nvim")
 	-- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
 
 	use({
@@ -235,7 +228,7 @@ return packer.startup(function(use)
 		"kosayoda/nvim-lightbulb",
 		requires = "antoinemadec/FixCursorHold.nvim",
 	})
-	use("simrat39/symbols-outline.nvim")
+	--[[ use("simrat39/symbols-outline.nvim") ]]
 
 	use("rmagatti/goto-preview")
 	use("sunjon/shade.nvim")
@@ -252,8 +245,6 @@ return packer.startup(function(use)
 	use("AndrewRadev/tagalong.vim")
 	use("tpope/vim-repeat")
 	use("windwp/nvim-ts-autotag")
-	-- neo-minimap
-	use("ziontee113/neo-minimap")
 	use({
 		"folke/noice.nvim",
 		event = "VimEnter",
