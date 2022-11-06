@@ -1,7 +1,0 @@
-{
-  "svelte.enable-ts-plugin": true,
-  "html.autoClosingTags": true,
-  "coc.preferences.formatOnSaveFiletypes": ["css", "markdown", "vue", "javascript", "typescript", "html", "svelte"],
-  "eslint.autoFixOnSave": false,
-  "snippets.userSnippetsDirectory:": "~/.config/nvim/snips"
-}
