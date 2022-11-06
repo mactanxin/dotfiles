@@ -1,12 +1,10 @@
 local options = {
 	foldenable = false,
-	hlsearch = false,
-	statusline = '%F',
+	statusline = "%F",
 	foldmethod = "syntax",
 	syntax = "on",
 	autochdir = true,
 	ruler = true,
-	hlsearch = false,
 	backup = false, -- creates a backup file
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 	cmdheight = 1, -- more space in the neovim command line for displaying messages
