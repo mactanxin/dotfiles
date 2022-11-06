@@ -5,9 +5,9 @@ if not null_ls_status_ok then
 end
 
 require("noice").setup({
-lsp = {
+  lsp = {
     message = {
-      enabled = false
+      enabled = true 
     },
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
