@@ -40,7 +40,7 @@ keymap("n", "[e", "<cmd>Lspsaga diagnostic_jump_prev<CR>", { silent = true })
 keymap("n", "]e", "<cmd>Lspsaga diagnostic_jump_next<CR>", { silent = true })
 
 -- Outline
-keymap("n", "<leader>lso", "<cmd>LSoutlineToggle<CR>", { silent = true })
+keymap("n", "<leader>so", "<cmd>LSoutlineToggle<CR>", { silent = true })
 
 -- Hover Doc
 keymap("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
