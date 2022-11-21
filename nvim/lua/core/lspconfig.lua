@@ -1,13 +1,27 @@
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 require("lsp-format").setup({})
-require("nvim-lsp-installer").setup({
-	automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
+require("mason").setup({
 	ui = {
 		icons = {
-			server_installed = "✓",
-			server_pending = "➜",
-			server_uninstalled = "✗",
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
 		},
+	},
+})
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"sumneko_lua",
+		"volar",
+		"tsserver",
+		"tailwindcss",
+		"bashls",
+		"cssls",
+		"emmet_ls",
+		"html",
+		"jsonls",
+		"pyright",
+		"yamlls",
 	},
 })
 local opts = { noremap = true, silent = true }
