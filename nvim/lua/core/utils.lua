@@ -38,3 +38,20 @@ end
 command("ReloadConfig", function()
 	ReloadConfig()
 end, { nargs = "*" })
+
+--[[ local splitwrap_aumgroup = vim.api.nvim_create_augroup("MySplitWrap", { clear = true }) ]]
+--[[ vim.api.nvim_create_autocmd("WinNew", { ]]
+--[[     command = "windo set wrap", ]]
+--[[     group = splitwrap_aumgroup ]]
+--[[ }) ]]
+--[[]]
+--[[ vim.api.nvim_create_autocmd("WinEnter", { ]]
+--[[   group = splitwrap_aumgroup, ]]
+--[[   callback = function() ]]
+--[[     -- Get handlers for current windows, we need it to get the windows amount ]]
+--[[     local active_windows = vim.api.nvim_list_wins() ]]
+--[[     if #active_windows == 3 then ]]
+--[[       vim.wo.wrap = false ]]
+--[[     end ]]
+--[[   end ]]
+--[[ }) ]]
