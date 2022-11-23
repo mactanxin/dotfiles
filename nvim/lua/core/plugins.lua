@@ -49,6 +49,7 @@ return packer.startup(function(use)
 	use("junegunn/fzf.vim")
 	use("junegunn/vim-easy-align")
 	use("Shatur/neovim-ayu")
+	use("ellisonleao/gruvbox.nvim")
 	use("folke/tokyonight.nvim")
 	use("elzr/vim-json")
 	use("othree/html5.vim")
@@ -137,7 +138,7 @@ return packer.startup(function(use)
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use({ "williamboman/mason.nvim" })
-  use({ "williamboman/mason-lspconfig.nvim" })
+	use({ "williamboman/mason-lspconfig.nvim" })
 	use("nvim-lua/lsp-status.nvim")
 	use("lukas-reineke/lsp-format.nvim")
 	use("onsails/lspkind.nvim")
@@ -261,17 +262,18 @@ return packer.startup(function(use)
 			"rcarriga/nvim-notify",
 		},
 	})
-	--[[ use({ ]]
-	--[[ 	"folke/drop.nvim", ]]
-	--[[ 	event = "VimEnter", ]]
-	--[[ 	config = function() ]]
-	--[[ 		require("drop").setup({ ]]
-	--[[ 		  theme="stars" ]]
-	--[[ 		}) ]]
-	--[[ 	end, ]]
-	--[[ }) ]]
 	use("glepnir/lspsaga.nvim")
 	use("zbirenbaum/neodim")
+	use {
+  "folke/zen-mode.nvim",
+  config = function()
+    require("zen-mode").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
