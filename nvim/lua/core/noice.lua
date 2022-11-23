@@ -5,20 +5,20 @@ if not null_ls_status_ok then
 end
 
 require("noice").setup({
-  lsp = {
-    message = {
-      enabled = true 
-    },
-      override = {
-        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-        ["vim.lsp.util.stylize_markdown"] = true,
-        ["cmp.entry.get_documentation"] = true,
-      },
-    },
+	lsp = {
+		message = {
+			enabled = true,
+		},
+		override = {
+			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+			["vim.lsp.util.stylize_markdown"] = true,
+			["cmp.entry.get_documentation"] = true,
+		},
+	},
 	views = {
 		cmdline_popup = {
 			position = {
-				row = 5,
+				row = "50%",
 				col = "50%",
 			},
 			size = {
@@ -29,7 +29,7 @@ require("noice").setup({
 		popupmenu = {
 			relative = "editor",
 			position = {
-				row = 8,
+				row = "50%",
 				col = "50%",
 			},
 			size = {
