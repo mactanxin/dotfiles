@@ -4,6 +4,9 @@ if impatient_ok then
 end
 require("core.globals")
 require("core.ayu")
+--[[ require("core.colors.purple-green") ]]
+require("core.colorscheme")
+require("core.colors.ember-fire")
 require("core.options")
 require("core.keymaps")
 require("core.nvim-cmp")
