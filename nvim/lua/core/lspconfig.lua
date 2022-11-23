@@ -1,39 +1,22 @@
--- See `:help vim.diagnostic.*` for documentation on any of the below functions
-require("lsp-format").setup({})
-require("mason").setup({
-	ui = {
-		icons = {
-			package_installed = "✓",
-			package_pending = "➜",
-			package_uninstalled = "✗",
-		},
-	},
-})
-require("mason-lspconfig").setup({
-	ensure_installed = {
-		"sumneko_lua",
-		"volar",
-		"tsserver",
-		"tailwindcss",
-		"bashls",
-		"cssls",
-		"emmet_ls",
-		"html",
-		"jsonls",
-		"pyright",
-		"yamlls",
-	},
-})
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist, opts)
+local status, nvim_lsp = pcall(require, "lspconfig")
+if (not status) then return end
+
+local protocol = require('vim.lsp.protocol')
+
+local on_attach = function(client, bufnr)
+  -- format on save
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = vim.api.nvim_create_augroup("Format", { clear = true }),
+      buffer = bufnr,
+      callback = function() vim.lsp.buf.formatting_seq_sync() end
+    })
+  end
+end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	--[[ require "lsp-format".on_attach(client) ]]
 	-- Enable completion triggered by <c-x><c-o>
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -64,54 +47,17 @@ local on_attach = function(client, bufnr)
 	--[[ vim.keymap.set("n", "<space>f", vim.lsp.buf.format, async_bufopts) ]]
 end
 
--- Capability check for tailwind lsp protocol
---[[ local capabilities = vim.lsp.protocol.make_client_capabilities() ]]
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
--- You are now capable!
-capabilities.textDocument.colorProvider = true
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local lsp_flags = {
-	-- This is the default in Nvim 0.7+
-	debounce_text_changes = 150,
-}
-local util = require("vim.lsp.util")
-
 local formatting_callback = function(client, bufnr)
 	client.server_capabilities.document_formatting = false
 	client.server_capabilities.document_range_formatting = false
 end
 
-require("lspconfig").eslint.setup({})
-
-require("lspconfig")["pyright"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-require("lspconfig")["tsserver"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-})
-
-require("lspconfig")["svelte"].setup({
-	on_attach = on_attach,
-	flags = lsp_flags,
-	filetypes = { "svelte" },
-	settings = {
-		svelte = {
-			plugin = {
-				html = { completions = { enable = true, emmet = false } },
-				svelte = { completions = { enable = true, emmet = false } },
-				css = { completions = { enable = true, emmet = true } },
-			},
-		},
-	},
-})
-
-require("lspconfig").tailwindcss.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+-- TypeScript
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" }
+}
 
 require("lspconfig").volar.setup({
 	on_attach = function(client, bufnr)
@@ -164,8 +110,17 @@ require("lspconfig").volar.setup({
 	},
 })
 
-require("lspconfig").cssls.setup({
-	on_attach = on_attach,
-	filetypes = { "css", "scss", "less" },
-	capabilities = capabilities,
-})
+nvim_lsp.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.html.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
