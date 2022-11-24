@@ -90,12 +90,7 @@ keymap(
 )
 keymap("n", "Q", ":q<CR>", opts)
 keymap("n", "Z", ":q!<CR>", opts)
-keymap(
-	"",
-	"R",
-	":lua vim.cmd([[source $MYVIMRC]]) vim.notify('Configs reloaded', 'info', {title = 'User config reloaded'})<CR>",
-	opts
-)
+mapcmd("R", "ReloadConfig<CR>")
 keymap("", "cd", ":chdir", opts)
 
 -- Visual --
