@@ -3,19 +3,16 @@ if impatient_ok then
 	impatient.enable_profile()
 end
 require("core.globals")
-require("core.ayu")
+--[[ require("core.ayu") ]]
 --[[ require("core.colors.purple-green") ]]
-require("core.colorscheme")
-require("core.colors.ember-fire")
 require("core.options")
 require("core.keymaps")
-require("core.nvim-cmp")
+require("ui")
+require("configs")
 require("core.plugins")
-require("core.startup-screen")
-require("core.dashboard")
+require("core.nvim-cmp")
 require("core.lspconfig")
 require("core.lsp-status")
-require("core.null-ls")
 require("core.lspsaga")
 require("core.utils")
 

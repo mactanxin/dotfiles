@@ -17,8 +17,8 @@ return {
 		},
 		{
 			key = "-",
-			mods = "CTRL|SHIFT",
-			action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
+			mods = "CTRL",
+			action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain", args = { "right " } }),
 		},
 	},
 }

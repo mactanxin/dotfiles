@@ -65,7 +65,6 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 	use("kyazdani42/nvim-web-devicons")
-	use("kyazdani42/nvim-tree.lua")
 	use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
 	use("moll/vim-bbye")
 	use("nvim-lualine/lualine.nvim")
@@ -142,27 +141,6 @@ return packer.startup(function(use)
 	use("nvim-lua/lsp-status.nvim")
 	use("lukas-reineke/lsp-format.nvim")
 	use("onsails/lspkind.nvim")
-	-- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-
-	use({
-		"stevearc/aerial.nvim",
-		config = function()
-			require("aerial").setup({
-				filter_kind = {
-					"Class",
-					"Constant",
-					"Constructor",
-					"Enum",
-					"Function",
-					"Interface",
-					"Module",
-					"Method",
-					"Struct",
-				},
-			})
-		end,
-	})
-
 	-- Telescope
 	use({
 		"nvim-telescope/telescope.nvim",
@@ -264,16 +242,16 @@ return packer.startup(function(use)
 	})
 	use("glepnir/lspsaga.nvim")
 	use("zbirenbaum/neodim")
-	use {
-  "folke/zen-mode.nvim",
-  config = function()
-    require("zen-mode").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-}
+	use({
+		"folke/zen-mode.nvim",
+		config = function()
+			require("zen-mode").setup({
+				-- your configuration comes here
+				-- or leave it empty to use the default settings
+				-- refer to the configuration section below
+			})
+		end,
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
