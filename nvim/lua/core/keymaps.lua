@@ -216,3 +216,6 @@ mapcmd("<LEADER>fm", ":lua vim.lsp.buf.formatting()<cr>")
 mapkey("n", "<leader>tn", ":lua require('null-ls').toggle({})<cr>")
 -- LazyGit
 mapcmd("<leader>lg", ":LazyGit")
+
+-- TreeSJ
+mapcmd("T", ":TSJToggle<CR>")
