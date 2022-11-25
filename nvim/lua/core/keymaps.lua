@@ -183,6 +183,7 @@ mapkey("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 mapkey("n", "<leader>ft", "<cmd>Telescope notify<cr>")
 maplua("<leader>fs", "require('session-lens').search_session()")
 mapkey("n", "<leader>fe", "<cmd>Telescope file_browser<cr>")
+mapkey("n", "<leader>so", "<cmd>Telescope lsp_document_symbols<cr>")
 -- telescope git commands
 mapkey("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
 mapkey("n", "<leader>gbc", "<cmd>Telescope git_bcommits<cr>", opts)
