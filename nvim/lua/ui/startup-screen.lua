@@ -144,10 +144,6 @@ local cool = {
 
 local headers = { cool }
 
-dashboard.section.terminal.command = "cat | lolcat --seed=27 " .. os.getenv("HOME") .. "/.config/nvim/static/logo.cat"
-dashboard.section.terminal.width = 69
-dashboard.section.terminal.height = 8
-
 local function header_chars()
 	return headers[math.random(#headers)]
 end
@@ -222,7 +218,6 @@ local opts = {
 	layout = {
 		{ type = "padding", val = 2 },
 		header_color(),
-		--[[ dashboard.section.terminal, ]]
 		{ type = "padding", val = 2 },
 		section_mru,
 		{ type = "padding", val = 2 },
@@ -230,6 +225,7 @@ local opts = {
 	},
 	opts = {
 		margin = 5,
+		noautocmd = true,
 	},
 }
 
