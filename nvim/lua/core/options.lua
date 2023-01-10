@@ -1,7 +1,10 @@
 local options = {
-	foldenable = false,
 	statusline = "%F",
 	foldmethod = "syntax",
+	foldcolumn = '1',
+	foldlevel = 99,
+	foldlevelstart = 99,
+	foldenable = true,
 	syntax = "on",
 	autochdir = true,
 	ruler = true,

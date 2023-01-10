@@ -189,7 +189,7 @@ mapkey("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", opts)
 mapkey("n", "<leader>gbc", "<cmd>Telescope git_bcommits<cr>", opts)
 mapkey("n", "<leader>gbr", "<cmd>Telescope git_branches<cr>", opts)
 mapkey("n", "<leader>gst", "<cmd>Telescope git_status<cr>", opts)
-maplua("<leader>fs", "require('session-lens').search_session()")
+--[[ maplua("<leader>fs", "require('session-lens').search_session()") ]]
 maplua("<leader>cn", "require('notify').dismiss()<cr>", opts)
 -- SarchBox Key Bindings
 mapcmd("<LEADER>rs", "SearchBoxIncSearch")
@@ -203,7 +203,6 @@ mapcmd("ga", ":EasyAlign<CR>", opts)
 
 -- Diff View
 mapcmd("<LEADER>df", ":DiffviewOpen<CR>")
-
 
 -- PeepSight
 mapcmd("<LEADER>pp", ":Peepsight<CR> :lua vim.notify('Peepsight toggled', 'info', { title = 'PeepSight Plugin' })<cr>")

@@ -16,8 +16,8 @@ end
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "gruvbox",
-		--[[ theme = chooseRandomTheme(), ]]
+		--[[ theme = "palenight", ]]
+		theme = chooseRandomTheme(),
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {

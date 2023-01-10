@@ -1,0 +1,6 @@
+require("configs.goto-preview")
+require("configs.noice")
+require("configs.ufo")
+require("configs.null-ls")
+require("configs.prettier")
+require("import-cost").setup(opts)

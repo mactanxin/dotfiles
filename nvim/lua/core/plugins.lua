@@ -38,13 +38,9 @@ packer.init({
 -- Install your plugins here
 return packer.startup(function(use)
 	-- My plugins here
-	--[[ use "github/copilot.vim" ]]
 	use("nvim-treesitter/nvim-treesitter")
 	use("wellle/context.vim")
 	use("airblade/vim-rooter")
-	-- use "mhinz/vim-startify"
-	use("majutsushi/tagbar")
-	use("w0rp/ale")
 	use("junegunn/fzf")
 	use("junegunn/fzf.vim")
 	use("junegunn/vim-easy-align")
@@ -54,11 +50,8 @@ return packer.startup(function(use)
 	use("folke/tokyonight.nvim")
 	use("elzr/vim-json")
 	use("othree/html5.vim")
-	-- use "evanleck/vim-svelte"
-	-- use "Himujjal/tree-sitter-svelte"
 	use("leafOfTree/vim-svelte-plugin")
 	use("hail2u/vim-css3-syntax")
-	--[[ use "pangloss/vim-javascript" ]]
 	use("mattn/emmet-vim")
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
@@ -108,6 +101,7 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	use({ "koenverburg/peepsight.nvim" })
+	-- highlight tailwind css colors in background
 	use({
 		"mrshmllow/document-color.nvim",
 		config = function()
@@ -128,8 +122,8 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-buffer") -- buffer completions
 	use("hrsh7th/cmp-path") -- path completions
 	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
@@ -151,13 +145,39 @@ return packer.startup(function(use)
 		end,
 	})
 	use("nvim-telescope/telescope-fzf-native.nvim")
-	--[[ use({ "edluffy/hologram.nvim" }) ]]
-
+	use("nvim-telescope/telescope-media-files.nvim")
+	use({ "nvim-telescope/telescope-file-browser.nvim" })
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+
+	-- Coding Assistant
+	use("sudormrfbin/cheatsheet.nvim")
+	use("RishabhRD/popfix")
+	use("RishabhRD/nvim-cheat.sh")
+	use({
+		"jameshiew/nvim-magic",
+		config = function()
+			require("nvim-magic").setup()
+		end,
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+	})
+	use({
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({
+				-- optional configuration
+			})
+		end,
+		requires = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+	})
 	-- Smoooooth scrolling
 	use("declancm/cinnamon.nvim")
-	use({ "nvim-telescope/telescope-file-browser.nvim" })
-	use("nvim-telescope/telescope-media-files.nvim")
 	use("rafaqz/ranger.vim")
 	use({
 		"nvim-neo-tree/neo-tree.nvim",
@@ -253,13 +273,15 @@ return packer.startup(function(use)
 			})
 		end,
 	})
-  use({
-    'Wansmer/treesj',
-    requires = { 'nvim-treesitter' },
-    config = function()
-      require('treesj').setup({--[[ your config ]]})
-    end,
-  })
+	use({
+		"Wansmer/treesj",
+		requires = { "nvim-treesitter" },
+		config = function()
+			require("treesj").setup({--[[ your config ]]
+			})
+		end,
+	})
+	use("barrett-ruth/import-cost.nvim")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

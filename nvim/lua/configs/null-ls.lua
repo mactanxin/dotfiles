@@ -20,9 +20,9 @@ end
 null_ls.setup({
 	debug = false,
 	sources = {
-		formatting.eslint_d,
+		formatting.eslint,
 		formatting.stylua,
-		diagnostics.eslint_d,
+		diagnostics.eslint,
 		--[[ null_ls.builtins.code_actions.gitsigns, ]]
 		--[[ null_ls.builtins.completion.spell, ]]
 	},
@@ -39,6 +39,6 @@ null_ls.setup({
 	end,
 })
 
-null_ls.builtins.formatting.eslint_d.with({
+null_ls.builtins.formatting.eslint.with({
 	extra_args = { "--style", "{IndentWidth: 2 ,ColumnLimit: 120}" },
 })

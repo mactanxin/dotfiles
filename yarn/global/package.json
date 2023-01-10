@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@cloudbase/cli": "^1.6.7",
-    "create-vite": "^3.0.2"
+    "create-vite": "^3.0.2",
+    "create-vue-termui": "^0.0.12"
   }
 }

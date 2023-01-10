@@ -39,6 +39,7 @@ complete -c alacritty -n "__fish_seen_subcommand_from help" -s V -l version -d '
 
 set -g -x PATH ~/bin /opt/homebrew/bin /Users/xintan/.nvm/versions/node/v16.15.1/bin /Users/xintan/.autojump/bin /usr/local/bin /usr/bin /bin /usr/sbin /sbin /Library/Apple/usr/bin $PATH
 set -gx EDITOR nvim
+set -gx OPENAI_API_KEY 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
 starship init fish | source
 
 
